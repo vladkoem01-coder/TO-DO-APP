@@ -1,16 +1,19 @@
-import Task from './Task';
+import Task from "./Task";
 
 type TaskType = {
   id: number;
   description: string;
   created: string;
+  completed: boolean;
+ 
 };
 
 type TaskListProps = {
   tasks: TaskType[];
+   onDelete: (id: number) => void;
 };
 
-function TaskList({ tasks }: TaskListProps) {
+function TaskList({ tasks, onDelete }: TaskListProps) {
   return (
     <ul className="todo-list">
       {tasks.map((task) => (
@@ -19,6 +22,8 @@ function TaskList({ tasks }: TaskListProps) {
           id={task.id}
           description={task.description}
           created={task.created}
+          completed={task.completed}
+          onDelete={onDelete}
         />
       ))}
     </ul>
@@ -26,4 +31,3 @@ function TaskList({ tasks }: TaskListProps) {
 }
 
 export default TaskList;
-

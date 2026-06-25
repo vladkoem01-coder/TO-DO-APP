@@ -2,11 +2,13 @@ type TaskProps = {
   id: number;
   description: string;
   created: string;
+  completed: boolean;
+  onDelete: (id: number) => void;
 };
 
-function Task({ id, description, created }: TaskProps) {
+function Task({ id, description, created, completed, onDelete}: TaskProps) {
   return (
-    <li>
+    <li className={completed ? 'completed' : ''}>
       <div className="view">
         <input className="toggle" type="checkbox" />
 
@@ -21,7 +23,10 @@ function Task({ id, description, created }: TaskProps) {
         </label>
 
         <button className="icon icon-edit" />
-        <button className="icon icon-destroy" />
+        <button 
+        className="icon icon-destroy" 
+        onClick={() => onDelete(id)}
+        />
       </div>
 
       <input
