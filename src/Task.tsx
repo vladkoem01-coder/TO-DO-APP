@@ -1,4 +1,10 @@
-function Task() {
+type TaskProps = {
+  id: number;
+  description: string;
+  created: string;
+};
+
+function Task({ id, description, created }: TaskProps) {
   return (
     <li>
       <div className="view">
@@ -6,17 +12,23 @@ function Task() {
 
         <label>
           <span className="description">
-            Active task
+            {description}
           </span>
 
           <span className="created">
-            created 5 minutes ago
+            created {created}
           </span>
         </label>
 
         <button className="icon icon-edit" />
         <button className="icon icon-destroy" />
       </div>
+
+      <input
+        type="text"
+        className="edit"
+        defaultValue="Editing task"
+      />
     </li>
   );
 }
