@@ -1,14 +1,27 @@
+import {useState} from 'react';
 type TaskProps = {
   id: number;
   description: string;
   created: string;
   completed: boolean;
   onDelete: (id: number) => void;
+  onEdit: (id: number, newDescription: string) => void;
 };
 
-function Task({ id, description, created, completed, onDelete}: TaskProps) {
+function Task(
+  {id, description, created, completed, onDelete, onEdit}:
+  TaskProps) {
+
+    const [editing, setEditing] = useState(false);
+
   return (
-    <li className={completed ? 'completed' : ''}>
+    <li className={
+      editing
+      ? 'editing'
+      : completed
+      ? 'completed'
+      : ''
+    }>
       <div className="view">
         <input className="toggle" type="checkbox" />
 
@@ -22,7 +35,10 @@ function Task({ id, description, created, completed, onDelete}: TaskProps) {
           </span>
         </label>
 
-        <button className="icon icon-edit" />
+        <button 
+        className="icon icon-edit" 
+        onClick={() => setEditing(true)}
+        />
         <button 
         className="icon icon-destroy" 
         onClick={() => onDelete(id)}

@@ -30,6 +30,15 @@ const deleteTask = (id: number) => {
   tasks.filter((tasks) => tasks.id !== id)
 )}
 
+const editTask = (id: number, newDescription: string) =>{
+  setTasks ((tasks) =>
+  tasks.map((task)=>
+    task.id === id
+  ? {...task, description: newDescription}
+: task
+))
+}
+
   return (
 
     <section className="todoapp">
@@ -38,6 +47,7 @@ const deleteTask = (id: number) => {
         <TaskList 
         tasks={tasks}
         onDelete={deleteTask}
+        onEdit={editTask}
         />
         <Footer />
       </section>
