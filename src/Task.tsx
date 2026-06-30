@@ -13,6 +13,7 @@ function Task(
   TaskProps) {
 
     const [editing, setEditing] = useState(false);
+    const [editedText, setEditedText] = useState(description)
 
   return (
     <li className={
@@ -48,7 +49,13 @@ function Task(
       <input
         type="text"
         className="edit"
-        defaultValue="Editing task"
+        value={editedText}
+        onChange={(e) => setEditedText(e.target.value)}
+        onKeyDown={(e) => {
+  if (e.key === 'Enter') {
+    onEdit(id, editedText);
+    setEditing(false);
+  }}}
       />
     </li>
   );
