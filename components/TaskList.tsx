@@ -5,13 +5,12 @@ type TaskType = {
   description: string;
   created: string;
   completed: boolean;
- 
 };
 
 type TaskListProps = {
   tasks: TaskType[];
-   onDelete: (id: number) => void;
-   onEdit: (id: number, newDescription: string) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number, newDescription: string) => void;
 };
 
 function TaskList({ tasks, onDelete, onEdit }: TaskListProps) {

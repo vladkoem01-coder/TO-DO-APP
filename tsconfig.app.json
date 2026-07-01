@@ -21,5 +21,14 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "components/TasksFilter.tsx",
+    "components/Footer.tsx",
+    "components/App.tsx",
+    "components/main.tsx",
+    "components/NewTaskForm.tsx",
+    "components/Task.tsx",
+    "components/TaskList.tsx"
+  ]
 }
