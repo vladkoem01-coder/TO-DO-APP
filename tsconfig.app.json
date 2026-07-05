@@ -23,12 +23,12 @@
   },
   "include": [
     "src",
-    "components/TasksFilter.tsx",
-    "components/Footer.tsx",
-    "components/App.tsx",
-    "components/main.tsx",
-    "components/NewTaskForm.tsx",
-    "components/Task.tsx",
-    "components/TaskList.tsx"
+    "src/components/TasksFilter.tsx",
+    "src/components/Footer.tsx",
+    "src/components/App.tsx",
+    "src/main.tsx",
+    "src/components/NewTaskForm.tsx",
+    "src/components/Task.tsx",
+    "src/components/TaskList.tsx"
   ]
 }

@@ -1,7 +1,8 @@
-import NewTaskForm from "./NewTaskForm";
-import TaskList from "./TaskList";
-import Footer from "./Footer";
+import NewTaskForm from "./components/NewTaskForm";
+import TaskList from "./components/TaskList";
+import Footer from "./components/Footer";
 import { useState } from "react";
+
 
 function App() {
   const [tasks, setTasks] = useState([
