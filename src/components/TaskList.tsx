@@ -5,15 +5,17 @@ type TaskType = {
   description: string;
   created: string;
   completed: boolean;
+  
 };
 
 type TaskListProps = {
   tasks: TaskType[];
   onDelete: (id: number) => void;
   onEdit: (id: number, newDescription: string) => void;
+  toggleTask: (id: number) => void;
 };
 
-function TaskList({ tasks, onDelete, onEdit }: TaskListProps) {
+function TaskList({ tasks, onDelete, onEdit,toggleTask }: TaskListProps) {
   return (
     <ul className="todo-list">
       {tasks.map((task) => (
@@ -25,6 +27,7 @@ function TaskList({ tasks, onDelete, onEdit }: TaskListProps) {
           completed={task.completed}
           onDelete={onDelete}
           onEdit={onEdit}
+          toggleTask={toggleTask}
         />
       ))}
     </ul>

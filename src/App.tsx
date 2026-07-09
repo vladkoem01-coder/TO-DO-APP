@@ -38,11 +38,21 @@ function App() {
     );
   };
 
+  const toggleTask = (id: number) => {
+  setTasks((tasks) =>
+    tasks.map((task) =>
+      task.id === id
+        ? { ...task, completed: !task.completed }
+        : task,
+    ),
+  );
+};
+
   return (
     <section className="todoapp">
       <NewTaskForm />
       <section className="main">
-        <TaskList tasks={tasks} onDelete={deleteTask} onEdit={editTask} />
+        <TaskList tasks={tasks} onDelete={deleteTask} onEdit={editTask} toggleTask={toggleTask}/>
         <Footer />
       </section>
     </section>

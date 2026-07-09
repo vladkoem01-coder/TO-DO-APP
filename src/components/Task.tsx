@@ -6,6 +6,7 @@ type TaskProps = {
   completed: boolean;
   onDelete: (id: number) => void;
   onEdit: (id: number, newDescription: string) => void;
+  toggleTask: (id: number) => void;
 };
 
 function Task({
@@ -15,6 +16,7 @@ function Task({
   completed,
   onDelete,
   onEdit,
+  toggleTask
 }: TaskProps) {
   const [editing, setEditing] = useState(false);
   const [editedText, setEditedText] = useState(description);
@@ -22,7 +24,11 @@ function Task({
   return (
     <li className={editing ? "editing" : completed ? "completed" : ""}>
       <div className="view">
-        <input className="toggle" type="checkbox" />
+        <input className="toggle" 
+        type="checkbox" 
+        checked={completed}
+        onChange={() => toggleTask(id)}
+        />
 
         <label>
           <span className="description">{description}</span>
