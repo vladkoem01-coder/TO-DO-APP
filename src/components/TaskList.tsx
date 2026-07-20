@@ -13,6 +13,7 @@ type TaskListProps = {
   onDelete: (id: number) => void;
   onEdit: (id: number, newDescription: string) => void;
   toggleTask: (id: number) => void;
+  
 };
 
 function TaskList({ tasks, onDelete, onEdit,toggleTask }: TaskListProps) {

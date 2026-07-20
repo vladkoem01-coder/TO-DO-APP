@@ -48,11 +48,25 @@ function App() {
   );
 };
 
+const addTask = (description: string) => {
+  const newTask = {
+    id: Date.now(),
+    description,
+    created: "Now",
+    completed: false
+  }
+
+  setTasks((tasks) => [...tasks, newTask])
+}
   return (
     <section className="todoapp">
-      <NewTaskForm />
+      <NewTaskForm addTask={addTask}/>
       <section className="main">
-        <TaskList tasks={tasks} onDelete={deleteTask} onEdit={editTask} toggleTask={toggleTask}/>
+        <TaskList tasks={tasks}
+        onDelete={deleteTask}
+        onEdit={editTask} 
+        toggleTask={toggleTask}
+        />
         <Footer />
       </section>
     </section>
