@@ -5,6 +5,7 @@ import { useState } from "react";
 
 
 function App() {
+  const [filter, setFilter] = useState<'all'| 'active' | 'completed'>('all')
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -58,16 +59,38 @@ const addTask = (description: string) => {
 
   setTasks((tasks) => [...tasks, newTask])
 }
-  return (
+
+const filteredTasks = tasks.filter((task) => {
+  if (filter === 'active') 
+    return !task.completed;
+  if (filter === 'completed')
+    return task.completed;
+  return true
+})
+
+const activeTasksCount = tasks.filter((task) => !task.completed).length;
+ 
+const clearCompleted = () => {
+setTasks((prevTasks) => prevTasks.filter((task) => !task.completed))
+}
+
+return (
     <section className="todoapp">
       <NewTaskForm addTask={addTask}/>
       <section className="main">
-        <TaskList tasks={tasks}
+        <TaskList
+        tasks={filteredTasks}
         onDelete={deleteTask}
         onEdit={editTask} 
         toggleTask={toggleTask}
+        
         />
-        <Footer />
+        <Footer
+        activeCount={activeTasksCount}
+        currentFilter={filter}
+        onFilterChange={setFilter}
+        onClearCompleted={clearCompleted}
+        />
       </section>
     </section>
   );
